@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: zero-active
+  namespace: zero-downtime
+
+spec:
+  selector:
+    app: zero-app
+
+  ports:
+  - port: 80
+    targetPort: 3000
+
+  type: ClusterIP

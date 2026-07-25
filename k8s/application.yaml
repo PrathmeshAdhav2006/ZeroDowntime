@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: zero-downtime
+  namespace: argocd
+
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/PrathmeshAdhav2006/ZeroDowntime.git
+    targetRevision: main
+    path: k8s
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: zero-downtime
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
