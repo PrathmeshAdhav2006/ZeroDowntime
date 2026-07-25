@@ -150,6 +150,22 @@ The app exposes metrics at:
 /api/metrics
 ```
 
+For a deterministic broken-release test, use:
+
+```text
+/api/metrics?scenario=broken
+```
+
+This returns a 7.4% error rate, 840ms p95 latency, 10% canary traffic, and breached error-rate and latency guardrails. The console also includes **Inject failure** and **Test broken metrics** controls.
+
+The intentionally broken application endpoint is:
+
+```text
+GET /api/broken-checkout
+```
+
+It returns a real HTTP `500` response for testing. The stable application and `/api/metrics` endpoint remain unaffected.
+
 A Prometheus scrape config example:
 
 ```yaml
@@ -176,4 +192,3 @@ scrape_configs:
 ## Contact
 
 Use this repo as a demonstration of zero-downtime deployment, monitoring, and GitOps-driven releases.
-
