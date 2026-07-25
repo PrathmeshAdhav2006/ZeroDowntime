@@ -22,7 +22,7 @@ spec:
       containers:
       - name: zero-app
 
-        image: prathmeshadhav2006/zerodowntime:8
+        image: prathmeshadhav2006/zerodowntime:9
 
         imagePullPolicy: Always
 
